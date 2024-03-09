@@ -41,14 +41,12 @@ customerRouter.post("/register", async (req, res) => {
 
 customerRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
   const customer = await getCustomerByEmail(email);
-
   if (!customer) {
-    return res.status(404).send("Wrong email!!!");
+    return res.status(404).send("No User Found with this associated email!!!");
   }
 
-  const isValidPassword = await comparePassword(password, user.password);
+  const isValidPassword = await comparePassword(password, customer.password);
 
   if (!isValidPassword) {
     return res.status(404).send("Wrong Password!!!");

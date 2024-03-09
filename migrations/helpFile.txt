@@ -1,0 +1,5 @@
+npx sequelize-cli init
+
+npx sequelize-cli migration:generate create-customer
+
+npx sequelize-cli db:migrate

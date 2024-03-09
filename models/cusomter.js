@@ -52,19 +52,8 @@ module.exports = (sequelize, DataTypes) => {
       city: {
         type: DataTypes.STRING,
         allowNull: true,
-        validate: {
-          min: 1,
-          max: 50,
-        },
       },
       zip_code: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        validate: {
-          is: /^[0-9]+$/,
-        },
-      },
-      address: {
         type: DataTypes.STRING,
         allowNull: true,
       },
