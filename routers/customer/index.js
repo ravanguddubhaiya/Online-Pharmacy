@@ -41,6 +41,7 @@ customerRouter.post("/register", async (req, res) => {
 
 customerRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
+
   const customer = await getCustomerByEmail(email);
   if (!customer) {
     return res.status(404).send("No User Found with this associated email!!!");
@@ -83,12 +84,12 @@ customerRouter.post("/login", async (req, res) => {
 });
 
 customerRouter.get("/", [authenticate], async (req, res) => {
+  console.log("HEllo from")
   const listCustomer = await getListCustomer();
 
   if (!listCustomer) {
     return res.status(500).send("Can't get list customer");
   }
-
   res.status(200).send(listCustomer);
 });
 

@@ -48,6 +48,16 @@ medicineRouter.get("/:id", async (req, res) => {
 });
 
 medicineRouter.get("/", async (req, res) => {
+  const listCustomer = await getListMedicine();
+
+  if (!listCustomer) {
+    return res.status(500).send("Can't get list customer");
+  }
+  res.status(200).send(listCustomer);
+});
+
+medicineRouter.get("/", async (req, res) => {
+  console.log("HEllo");
   const page = Number.parseInt(req.query.page);
   const size = Number.parseInt(req.query.size);
   const keyWordSearch = req.query.search || "";

@@ -5,7 +5,6 @@ const { sequelize } = require("./models");
 const rootRouter = require("./routers");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-//const { createMess } = require("./services/messenger");
 const app = express();
 const httpServer = require("http").createServer(app);
 
