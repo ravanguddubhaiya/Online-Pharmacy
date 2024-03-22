@@ -15,6 +15,7 @@ const gethistory = async (idCustomer) => {
 
 const createHistory = async (data) => {
   try {
+    console.log(data)
     const newHistory = await History.create(data);
     return newHistory;
   } catch (err) {

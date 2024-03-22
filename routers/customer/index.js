@@ -84,7 +84,7 @@ customerRouter.post("/login", async (req, res) => {
 });
 
 customerRouter.get("/", [authenticate], async (req, res) => {
-  console.log("HEllo from")
+  
   const listCustomer = await getListCustomer();
 
   if (!listCustomer) {
@@ -162,6 +162,7 @@ customerRouter.post("/logout", [authenticate], (req, res) => {
   );
   res.status(200).send("Log out is successfully");
 });
+
 
 customerRouter.put("/:id", async (req, res) => {
   const { id } = req.params;

@@ -40,28 +40,27 @@ sequelize
     console.log("Unable to connect to the database", err);
   });
 
-// (async () => {
-//   await sequelize.sync();
-// })();
+(async () => {
+  await sequelize.sync();
+})();
 
-// io.on("connection", (socket) => {
-//   socket.on("send_message", (data) => {
-//     const dataNew = {
-//       senderId: data.receiverId,
-//       receiverId: data.senderId,
-//       content: data.content,
-//       category: "receiver",
-//     };
+io.on("connection", (socket) => {
+  socket.on("send_message", (data) => {
+    const dataNew = {
+      senderId: data.receiverId,
+      receiverId: data.senderId,
+      content: data.content,
+      category: "receiver",
+    };
 
-//     createMess(dataNew);
-//     socket.broadcast.emit("receive_message");
-//   });
+    createMess(dataNew);
+    socket.broadcast.emit("receive_message");
+  });
 
-//   socket.on("send_order", (data) => {
-//     //Xử lý xong server gửi ngược lại client admin thông qua socket với key receive_order
-//     socket.broadcast.emit("receive_order", data);
-//   });
-// });
+  socket.on("send_order", (data) => {
+    socket.broadcast.emit("receive_order", data);
+  });
+});
 
 const PORT = process.env.PORT || 8000;
 
