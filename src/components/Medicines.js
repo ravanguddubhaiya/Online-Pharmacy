@@ -45,7 +45,6 @@ export default function Medcines({ medicinePanigation, sort }) {
                     </NavLink>
                   </li>
                   <li className="list-inline-item mr-0">
-                    {/* Dùng Modal phải có href để nó hiện ra thằng đó và thuộc tính data-toggle="modal" để mở modal*/}
                     <a
                       className="btn btn-sm btn-outline-dark"
                       href={`#medicine_${item.id}`}

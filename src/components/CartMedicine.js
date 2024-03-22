@@ -7,26 +7,17 @@ import CartFilter from "./CartFilter";
 
 export default function CartMedicine() {
   const dispatch = useDispatch();
-  // console.log("Hello Cart");
-  const customer = useSelector((state) => state.auth.login.currentCustomer);
-  // console.log(customer);
-  // const carts = useSelector((state) => state.cart.carts);
-
-  // const { cartTotalPrice, cartTotalMedicine, carts } = useSelector(
-  //   (state) => state.cart
-  // );
-
-  // console.log(cartTotalPrice);
-  // console.log(cartTotalMedicine);
-
-  const carts  = 0;
-  
   const navigate = useNavigate();
+  const customer = useSelector((state) => state.auth.login.currentCustomer);
+  const carts = useSelector((state) => state.cart.carts);
+  const { cartTotalPrice, cartToTalProduct } = useSelector(
+    (state) => state.cart
+  );
   useEffect(() => {
+    // Dispatch action to calculate total price whenever carts change
     dispatch(getTotalPrice());
-  }, [dispatch]);
+  }, [carts, dispatch]);
 
-  
 
   const handleProcess = () => {
     if (customer !== null) {
@@ -37,7 +28,7 @@ export default function CartMedicine() {
   };
   return (
     <Fragment>
-      {carts === 0 ? (
+      {carts.length === 0 ? (
         <CartEmpty />
       ) : (
         <Fragment>
@@ -46,25 +37,12 @@ export default function CartMedicine() {
               <div className="container">
                 <div className="row px-4 px-lg-5 py-lg-4 align-items-center">
                   <div className="col-lg-6">
-                    <h1 className="h2 text-uppercase mb-0">Cart</h1>
-                  </div>
-                  <div className="col-lg-6 text-lg-right">
-                    <nav aria-label="breadcrumb">
-                      <ol className="breadcrumb justify-content-lg-end mb-0 px-0">
-                        <li
-                          className="breadcrumb-item active"
-                          aria-current="page"
-                        >
-                          Cart
-                        </li>
-                      </ol>
-                    </nav>
+                    <h1 className="h2 text-uppercase mb-0">Medicine Cart</h1>
                   </div>
                 </div>
               </div>
             </section>
             <section className="py-5">
-              <h2 className="h5 text-uppercase mb-4">Shopping cart</h2>
               <div className="row">
                 <div className="col-lg-8 mb-4 mb-lg-0">
                   <CartFilter />
@@ -101,24 +79,24 @@ export default function CartMedicine() {
                           <strong className="text-uppercase small font-weight-bold">
                             Total Medicine
                           </strong>
-                          {/* <span className="text-muted small">
-                            {cartTotalMedicine}
-                          </span> */}
+                          <span className="text-muted small">
+                          {carts.length}
+                          </span>
                         </li>
                         <li className="d-flex align-items-center justify-content-between">
                           <strong className="text-uppercase small font-weight-bold">
                             Subtotal
                           </strong>
-                          {/* <span className="text-muted small">
-                            ${cartTotalPrice}
-                          </span> */}
+                          <span className="text-muted small">
+                          <span>${cartTotalPrice}</span>
+                          </span>
                         </li>
                         <li className="border-bottom my-2"></li>
                         <li className="d-flex align-items-center justify-content-between mb-4">
                           <strong className="text-uppercase small font-weight-bold">
                             Total
                           </strong>
-                          {/* <span>${cartTotalPrice}</span> */}
+                          <span>${cartTotalPrice}</span>
                         </li>
                       </ul>
                     </div>

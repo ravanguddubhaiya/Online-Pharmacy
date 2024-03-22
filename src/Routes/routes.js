@@ -3,6 +3,7 @@ import Register from "../components/Auth/Register";
 import CartMedicine from "../components/CartMedicine";
 import DetailMedicine from "../components/DetailMedicine";
 import Shop from "../components/Shop";
+import Checkout from '../components/Checkout'
 import Home from "../page/Home";
 
 const publicRoutes = [
@@ -25,6 +26,10 @@ const publicRoutes = [
   {
     path: "/cart",
     component: CartMedicine,
+  },
+  {
+    path: "/Checkout",
+    component: Checkout,
   },
   {
     path: "/shop",

@@ -4,7 +4,7 @@ import { DOMAIN } from "../../settings/config";
 
 const refreshToken = async () => {
   try {
-    const response = await axios.post(`${DOMAIN}/api/v1/users/refresh`, {
+    const response = await axios.post(`${DOMAIN}/api/v1/customer/refresh`, {
       withCredentials: true,
     });
     return response.data;
@@ -21,7 +21,6 @@ export const createAxios = (customter, dispatch, stateSuccess) => {
       const decocedToken = jwt_decode(customter?.token);
       if (decocedToken.exp < date.getTime() / 1000) {
         const data = await refreshToken();
-        console.log({ data });
         const refreshCustomter = {
           ...customter,
           token: data.accessToken,

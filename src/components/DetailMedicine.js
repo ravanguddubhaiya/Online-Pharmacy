@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 export default function DetailMedicine() {
   const { id } = useParams();
   const medicine = useSelector((state) => state.medicine.medicineDetail?.medicine);
+  
   const listMedicine = useSelector(
     (state) => state.medicine.medicines?.allMedicine
   );
@@ -71,7 +72,6 @@ export default function DetailMedicine() {
   };
 
   const handleAddToCart = (medicine, quantity) => {
-    console.log(medicine);
     dispatch(incrementItem({ medicine, quantity }));
     toast.success("Add Medicine To Cart Success", {
       position: "bottom-left",
@@ -83,20 +83,8 @@ export default function DetailMedicine() {
       progress: undefined,
       theme: "colored",
     });
-  };
+  };  
 
-  // useEffect(() => {
-  //   (async () => {
-  //     if (loadComment) {
-  //       const params = {
-  //         idProduct: id,
-  //       };
-  //       const query = "?" + queryString.stringify(params);
-  //       await getCommentProduct(dispatch, query);
-  //     }
-  //     setLoadComment(false);
-  //   })();
-  // }, [loadComment]);
 
   return (
     <div className="py-5">

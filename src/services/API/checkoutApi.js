@@ -7,9 +7,9 @@ import {
   sendMailStart,
   sendMailSuccess,
 } from "../../redux/checkoutSlice";
-import { DOMAIN } from "../../utils/settings/config";
+import { DOMAIN } from "../../settings/config";
 
-export const checkoutProduct = async (dispatch, params, accessToken, id) => {
+export const checkoutMedicine = async (dispatch, params, accessToken, id) => {
   dispatch(checkOutStart());
   try {
     await axios.post(`${DOMAIN}/api/v1/carts${params}`, id, {

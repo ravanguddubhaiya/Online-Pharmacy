@@ -7,9 +7,9 @@ import {
   getListHistoryStart,
   getListHistorySucess,
 } from "../../redux/historySlice";
-import { DOMAIN } from "../../utils/settings/config";
+import { DOMAIN } from "../../settings/config";
 
-export const createHistoryUser = async (dispatch, params) => {
+export const createHistoryCustomer = async (dispatch, params) => {
   dispatch(getHistoryStart());
   try {
     await axios.post(`${DOMAIN}/api/v1/history`, params);
@@ -19,7 +19,7 @@ export const createHistoryUser = async (dispatch, params) => {
   }
 };
 
-export const getListHistoryUser = async (dispatch, params = "") => {
+export const getListHistoryCustomer = async (dispatch, params = "") => {
   dispatch(getListHistoryStart());
   try {
     const response = await axios.get(`${DOMAIN}/api/v1/history/${params}`);

@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { loginSuccess } from "../redux/authSlice";
-//import { getTotalPrice } from "../redux/cartSlice";
+import { getTotalPrice } from "../redux/cartSlice";
 import { logoutCustomer } from "../services/API/authApi";
 import { createAxios } from "../services/API/createInstanceApi";
 
 export default function Header() {
   const customer = useSelector((state) => state.auth.login.currentCustomer);
-  //const carts = useSelector((state) => state.cart);
+  const carts = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,9 +21,6 @@ export default function Header() {
   const handleManage = () => {
     navigate("/manage");
   };
-  // const handleHistory = () => {
-  //   navigate("/historyUser");
-  // };
 
   return (
     <div className="container px-0 px-lg-3">
@@ -62,12 +59,12 @@ export default function Header() {
               <NavLink className="nav-link" to="/cart">
                 <i className="fas fa-dolly-flatbed mr-1 text-gray position-relative"></i>
                 Cart
-                {/* <span
+                <span
                   className="position-absolute px-1 text-xs text-white bg-danger rounded-circle"
                   style={{ top: "18px" }}
                 >
-                  {carts.cartToTalProduct}
-                </span> */}
+                  {carts.cartTotalMedicine}
+                </span>
               </NavLink>
             </li>
             {customer ? (

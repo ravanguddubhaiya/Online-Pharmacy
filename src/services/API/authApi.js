@@ -16,7 +16,6 @@ export const loginCustomer = async (dispatch, navigate, customer) => {
   dispatch(loginStart());
   try {
     const response = await axios.post(`${DOMAIN}/api/v1/customer/login`, customer);
-    console.log(response.data);
     dispatch(loginSuccess(response.data));
     navigate("/");
   } catch (err) {

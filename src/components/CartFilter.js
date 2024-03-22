@@ -100,7 +100,7 @@ export default function CartFilter() {
                       to={`/detail/${item.medicine.id}`}
                     >
                       <img
-                        src={item.medicine.img1}
+                        src={`/image/${item.medicine.img1}`}
                         alt={item.medicine.img1}
                         width="70"
                       />

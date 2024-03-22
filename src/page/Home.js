@@ -1,24 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-//import { getListProduct } from "../services/API/productApi";
-// import ProductBigSale from "../components/ProductBigSale";
-// import ProductForYou from "../components/ProductForYou";
-
 export default function Home() {
-  // const listProduct = useSelector(
-  //   (state) => state.product.products?.allProduct
-  // );
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   getListProduct(dispatch);
-  // }, []);
-
-  // const productDiscount = listProduct?.filter((product) => {
-  //   return product.promotionPercent >= 20;
-  // });
+  
 
   return (
     <div className="page-holder">
@@ -43,7 +26,7 @@ export default function Home() {
                   Welcome To A World Of Wellness,<br /> 
                   Where Health Meets Happiness!
                   </h1>
-                  <a className="btn btn-dark" href="shop.html">
+                  <a className="btn btn-dark" href="shop">
                     Browse Medicine
                   </a>
                 </div>

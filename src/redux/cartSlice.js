@@ -42,6 +42,7 @@ const cartSlice = createSlice({
         const tempMedicine = { ...action.payload, quantity };
         state.carts.push(tempMedicine);
       }
+      
     },
     removeItem: (state, action) => {
       const medicineId = action.payload;
